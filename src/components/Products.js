@@ -1,5 +1,8 @@
 import React from "react";
+import { useContext } from "react";
+import { ProductContext } from "../contexts/ProductContext";
 import styled from "styled-components";
+
 
 // Components
 import Product from "./Product";
@@ -19,10 +22,14 @@ const ScProducts = styled.section`
 `;
 
 const Products = (props) => {
+
+  const {products,addItem} =useContext(ProductContext);
+
+
   return (
     <ScProducts>
-      {props.products.map((product) => (
-        <Product key={product.id} product={product} addItem={props.addItem} />
+      {products.map((product) => (
+        <Product key={product.id} product={product} addItem={addItem} />
       ))}
     </ScProducts>
   );
